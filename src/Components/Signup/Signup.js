@@ -3,11 +3,13 @@ import React, { useContext, useState } from 'react';
 import Logo from '../../olx-logo.png';
 import './Signup.css';
 import { FirebaseContext } from '../../store/FirebaseContext';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
+import { getAuth, createUserWithEmailAndPassword,updateProfile } from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
+import { doc, deleteDoc ,setDoc,addDoc,collection,getDocs} from "firebase/firestore";
 
 
 export default function Signup() {
+  const navigate=useNavigate()
 const [username,setUsername]=useState('')
 const [email,setEmail]=useState('')
 const [phone,setPhone]=useState('')
@@ -22,12 +24,16 @@ const handleSubmit=(e)=>{
 createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     
-    userCredential.user.updateProfile({displayName:username})
-  }).catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    
-  });
+    updateProfile(auth.currentUser,{displayName:username})
+    addDoc(collection(firebase, "Users"), { 
+      id:userCredential.user.uid,
+      username:username,
+      phone:phone
+    }); 
+  }).then(()=>{
+    navigate("/login")
+
+  })
 
   
 
