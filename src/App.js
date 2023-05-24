@@ -7,18 +7,18 @@ import './App.css';
  */
 import Home from './Pages/Home';
 import Signup from './Pages/Signup';
+import Login from './Pages/Login';
 
 function App() {
   return (
     <div>
       <Router>
         <Routes>
-        <Route element={<Home/>} path="/">
+        <Route element={<Home/>} path="/"/>
+        <Route element={<Signup/>} path="/signup"/>
+        <Route element={<Login/>} path="/login"/>
         
-        </Route>
-        <Route element={<Signup/>} path="/signup">
         
-        </Route>
 
 
         </Routes>
