@@ -39,7 +39,7 @@ const Create = () => {
 
         }); 
       }).then(()=>{
-        navigate("/login")
+        navigate("/")
     
       })
       })
