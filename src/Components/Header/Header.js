@@ -44,7 +44,9 @@ function Header() {
           <span> ENGLISH </span>
           <Arrow></Arrow>
         </div>
-        <div className="loginPage">
+        <div onClick={()=>{
+          navigate('/login')
+        }} className="loginPage">
           <span>{user? ` ${user.displayName}` :"Login"}</span>
           <hr />
         </div>
@@ -54,7 +56,9 @@ function Header() {
               navigate('/login')
           })
         }}>Logout</span>}
-        <div className="sellMenu">
+        <div onClick={()=>{
+          navigate('/create')
+        }} className="sellMenu">
           <SellButton></SellButton>
           <div className="sellMenuContent">
             <SellButtonPlus></SellButtonPlus>

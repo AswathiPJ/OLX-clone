@@ -63,7 +63,9 @@ const handleLogin=(e)=>{
           <br />
           <button>Login</button>
         </form>
-        <a>Signup</a>
+        <a onClick={()=>{
+          navigate('/signup')
+        }}>Signup</a>
       </div>
     </div>
   );
