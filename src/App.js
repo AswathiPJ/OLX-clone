@@ -10,6 +10,7 @@ import './App.css';
 import Home from './Pages/Home';
 import Signup from './Pages/Signup';
 import Login from './Pages/Login';
+import Create from './Pages/Create';
 import { AuthContext, FirebaseContext } from './store/Context';
 
 function App() {
@@ -31,6 +32,7 @@ onAuthStateChanged(auth, (user) => {
         <Route element={<Home/>} path="/"/>
         <Route element={<Signup/>} path="/signup"/>
         <Route element={<Login/>} path="/login"/>
+        <Route element={<Create/>} path="/create"/>
         
         
 
