@@ -11,7 +11,9 @@ import Home from './Pages/Home';
 import Signup from './Pages/Signup';
 import Login from './Pages/Login';
 import Create from './Pages/Create';
+import View from './Pages/ViewPost';
 import { AuthContext, FirebaseContext } from './store/Context';
+import Post from './store/PostContext';
 
 function App() {
   const {setUser}=useContext(AuthContext)
@@ -27,12 +29,16 @@ onAuthStateChanged(auth, (user) => {
   })
   return (
     <div>
+      <Post>
+
+      
       <Router>
         <Routes>
         <Route element={<Home/>} path="/"/>
         <Route element={<Signup/>} path="/signup"/>
         <Route element={<Login/>} path="/login"/>
         <Route element={<Create/>} path="/create"/>
+        <Route element={<View/>} path="/view"/>
         
         
 
@@ -41,6 +47,7 @@ onAuthStateChanged(auth, (user) => {
         
       
       </Router>
+      </Post>
       
       
     </div>

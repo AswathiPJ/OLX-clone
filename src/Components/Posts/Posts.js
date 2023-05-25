@@ -5,10 +5,15 @@ import Heart from '../../assets/Heart';
 import './Post.css';
 import { FirebaseContext } from '../../store/Context';
 import { doc, deleteDoc ,setDoc,addDoc,collection,getDocs} from "firebase/firestore";
+import { PostContext } from '../../store/PostContext';
+import { useNavigate } from 'react-router-dom';
 
 function Posts() {
 const {firebase}=useContext(FirebaseContext)
 const [products,setProducts]=useState([])
+const {setPostDetails}=useContext(PostContext)
+const navigate=useNavigate()
+
 useEffect( ()=>{
   getDocs(collection(firebase, "Products")).then((snapshot)=>{
         const allPost=snapshot.docs.map((product)=>{
@@ -36,6 +41,11 @@ useEffect( ()=>{
 
             return( 
             <div
+            onClick={()=>{
+              setPostDetails(product)
+              navigate('/view')
+              
+            }}
             className="card"
           >
             <div className="favorite">
